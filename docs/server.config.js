@@ -5,7 +5,10 @@ module.exports = {
     function rewriteBasePath({ contentType, body }) {
       if (contentType.includes('text/html')) {
         return {
-          body: body.replace(/<base href=".*">/, '<base href="/_site-dev/">'),
+          body: body
+            .replace(/href="\//g, 'href="/_site-dev/')
+            .replace(/src="\//g, 'src="/_site-dev/'),
+          // body: body.replace(/<base href=".*">/, '<base href="/_site-dev/">'),
         };
       }
       return null;
