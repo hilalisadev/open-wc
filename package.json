@@ -6,8 +6,9 @@
     "build": "lerna run build",
     "build:types": "tsc -p tsconfig.build.types.json",
     "codelabs:build": "node ./packages/codelabs/build-codelabs.js",
-    "docs:build": "rimraf _site && npm run docs:build-dev && rollup -c docs/rollup.config.js",
+    "docs:build": "npm run docs:build-dev && npm run docs:build-prod",
     "docs:build-dev": "rimraf _site-dev && cd docs && eleventy",
+    "docs:build-prod": "rimraf _site && rollup -c docs/rollup.config.js",
     "docs:serve": "node packages/es-dev-server/dist/cli.js -c docs/server.config.js",
     "docs:start": "run-p docs:watch docs:serve",
     "docs:watch": "rimraf _site-dev && cd docs && eleventy --watch",
@@ -66,6 +67,7 @@
     "puppeteer": "^2.1.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.7.2",
+    "rollup-plugin-copy": "^3.3.0",
     "sinon": "^7.4.1",
     "typescript": "^3.8.3",
     "webpack-merge": "^4.1.5"
