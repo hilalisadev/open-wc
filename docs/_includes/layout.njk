@@ -14,16 +14,17 @@
         <main class="page">
           <div class="theme-default-content content__default">
             {{ content.html | safe }}
-            {% if content.jsCode %}
-              <script type="module">
-                {{ content.jsCode | safe }}
-              </script>
-            {% endif %}
           </div>
         </main>
       </div>
       <div class="global-ui"></div>
     </div>
+
+    {% if content.jsCode %}
+      <script type="module">
+        {{ content.jsCode | safe }}
+      </script>
+    {% endif %}
   </body>
 
 </html>
